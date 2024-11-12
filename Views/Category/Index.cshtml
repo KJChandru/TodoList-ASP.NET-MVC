@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Today's  List</h1>
+<div class="container p-3">
+    <div class="col-6">
+        <a asp-controller="Category" asp-action="create" class="btn btn-primary">
+            Enter New Task
+        </a>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Task Name</th>
+            <th>Order</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="50%">@obj.Name</td>
+                <td width="30%">@obj.DisplayOrder</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <form asp-controller="Category" asp-action="Edit" method="get">
+                            <input type="hidden" name="id" value="@obj.Id" />
+                            <button type="submit" class="btn btn-outline-secondary">
+                                <i class="bi bi-pencil-square"></i> Edit Task
+                            </button>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <form asp-controller="Category" asp-action="Delete" method="get">
+                        <input type="hidden" name="id" value="@obj.Id" />
+                        <button type="submit" class="btn btn-danger"> Completed 
+                            <i class="bi bi-pencil-square"></i> 
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

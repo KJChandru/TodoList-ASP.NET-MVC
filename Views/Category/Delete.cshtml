@@ -1,0 +1,32 @@
+﻿@model Category
+
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Delete Category</h2>
+
+    <form asp-action="DeletePOST" method="post" class="needs-validation" novalidate>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter a category name.
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="DisplayOrder" class="form-label"></label>
+            <input asp-for="DisplayOrder" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter a display order.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+
+
